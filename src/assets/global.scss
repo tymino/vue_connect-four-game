@@ -6,15 +6,14 @@
 
   --transition-delay: 0.4s;
 
-  // Primary
-  --color-soft-orange: hsl(35, 77%, 62%);
-  --color-soft-red: hsl(5, 85%, 63%);
+  --color-board: hsl(0, 0%, 100%);
+  --color-edge: hsl(251, 100%, 6%);
 
-  // Neutral
-  --color-off-white: hsl(36, 100%, 99%);
-  --color-grayish-blue: hsl(233, 8%, 79%);
-  --color-dark-grayish-blue: hsl(236, 13%, 42%);
-  --color-very-dark-blue: hsl(240, 100%, 5%);
+  --color-player-first: hsl(347, 99%, 70%);
+  --color-player-second: hsl(40, 100%, 71%);
+
+  --color-background: hsl(257, 100%, 64%);
+  --color-floor: hsl(257, 67%, 50%);
 
   --color-opacity: hsla(0, 0%, 100%, 0);
 }
