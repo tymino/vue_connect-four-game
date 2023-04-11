@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .grid {
-  --grid-padding: 10px;
+  --grid-padding: 1.3vmin;
   --grid-radius: 8%;
 
   display: grid;
@@ -25,6 +25,7 @@ export default {
   grid-template-rows: repeat(6, auto);
   grid-gap: var(--grid-padding);
   padding: var(--grid-padding);
+  padding-bottom: calc(var(--grid-padding) * 4);
 
   background-color: var(--color-board);
   border: 2px solid var(--color-edge);
