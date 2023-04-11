@@ -1,16 +1,31 @@
 <template>
   <div class="grid">
-    <Cell v-for="c in Array(6 * 7).fill(0)" :key="c" :data="0" />
+    <Cell
+      v-for="(value, index) in gameGrid"
+      :key="index"
+      :value="value"
+      :column="index % 7"
+    />
   </div>
 </template>
 
 <script>
+import { useStore } from 'vuex';
+import { computed } from 'vue';
+
 import Cell from '@/components/Cell.vue';
 
 export default {
   name: 'c-grid',
   components: {
     Cell,
+  },
+  setup() {
+    const store = useStore();
+
+    return {
+      gameGrid: computed(() => store.getters.getFlatGrid),
+    };
   },
 };
 </script>
