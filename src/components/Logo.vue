@@ -16,8 +16,8 @@ export default {
 <style lang="scss" scoped>
 .logo {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 16px 16px;
+  grid-template-rows: 16px 16px;
   grid-gap: 4px;
 }
 

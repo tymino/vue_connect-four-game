@@ -22,6 +22,8 @@ export default {
   border: none;
   border-radius: 20px;
 
+  font-family: var(--font-alkatra);
+  letter-spacing: 1px;
   text-transform: uppercase;
 
   cursor: pointer;

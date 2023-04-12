@@ -4,7 +4,7 @@
       <div class="header__button">
         <Button>menu</Button>
       </div>
-      <Logo />
+      <Logo class="header__logo" />
       <div class="header__button">
         <Button>restart</Button>
       </div>
@@ -71,13 +71,21 @@ export default {
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 140px auto 140px;
+  grid-template-rows: 1fr;
   align-items: center;
-  padding: 10px 0;
+  width: 100%;
+  padding: 34px 0;
+
+  &__logo {
+    justify-content: center;
+  }
 
   &__button {
-    width: 100px;
+    &:last-child {
+      justify-self: flex-end;
+    }
   }
 }
 

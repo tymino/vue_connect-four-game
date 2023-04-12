@@ -30,16 +30,20 @@ export default {
   align-items: center;
   padding: 10px 20px;
   max-width: 200px;
+
   background-color: var(--color-board);
   border: 2px solid var(--color-edge);
   border-radius: var(--grid-radius);
   box-shadow: 0px 6px var(--color-edge);
+
+  user-select: none;
 
   &__title {
     font-size: 1.1rem;
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
+
   &__score {
     width: 100%;
     font-size: 2.2rem;
