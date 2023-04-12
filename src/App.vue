@@ -9,24 +9,28 @@
         <Button>restart</Button>
       </div>
     </div>
-    <div class="content__grid">
-      <Grid />
-    </div>
+    <div class="content__grid"><Grid /></div>
+
+    <div class="content__card-1"><Card numberOfPlayer="1" score="4" /></div>
+
+    <div class="content__card-2"><Card numberOfPlayer="2" score="10" /></div>
 
     <!-- <div class="table"></div> -->
   </div>
 </template>
 
 <script>
-import Grid from '@/components/Grid.vue';
 import Button from '@/components/Button.vue';
+import Card from '@/components/Card.vue';
+import Grid from '@/components/Grid.vue';
 import Logo from '@/components/Logo.vue';
 
 export default {
   name: 'App',
   components: {
-    Grid,
     Button,
+    Card,
+    Grid,
     Logo,
   },
 };
@@ -34,14 +38,35 @@ export default {
 
 <style lang="scss">
 .content {
-  // display: grid;
-  // grid-template-columns: repeat(5, 1fr);
-  // grid-template-rows: repeat(2, minmax(100px, 1fr));
-  // width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  max-width: 850px;
   // z-index: 10;
 
+  &__header {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+
   &__grid {
-    z-index: 1000;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    // z-index: 1000;
+  }
+
+  &__card {
+    &-1 {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+    }
+    &-2 {
+      grid-column: 3 / 4;
+      grid-row: 1 / 3;
+    }
   }
 }
 

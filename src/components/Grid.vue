@@ -45,5 +45,6 @@ export default {
   background-color: var(--color-board);
   border: 2px solid var(--color-edge);
   border-radius: var(--grid-radius);
+  box-shadow: 0px 6px var(--color-edge);
 }
 </style>

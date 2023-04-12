@@ -36,10 +36,11 @@ export default {
 }
 
 .player-1 {
-  background-color: var(--color-player-first);
   box-shadow: inset 0px 3px var(--color-edge);
+  background-color: var(--color-player-first);
 }
 .player-2 {
+  box-shadow: inset 0px 3px var(--color-edge);
   background-color: var(--color-player-second);
 }
 </style>
