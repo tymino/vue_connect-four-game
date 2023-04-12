@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="header">
+    <div class="content__header header">
       <div class="header__button">
         <Button>menu</Button>
       </div>
@@ -9,7 +9,11 @@
         <Button>restart</Button>
       </div>
     </div>
-    <Grid />
+    <div class="content__grid">
+      <Grid />
+    </div>
+
+    <!-- <div class="table"></div> -->
   </div>
 </template>
 
@@ -29,25 +33,35 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  background-color: var(--color-background);
-}
+.content {
+  // display: grid;
+  // grid-template-columns: repeat(5, 1fr);
+  // grid-template-rows: repeat(2, minmax(100px, 1fr));
+  // width: 100%;
+  // z-index: 10;
 
-/* .content {
-} */
+  &__grid {
+    z-index: 1000;
+  }
+}
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-shrink: 1;
   padding: 10px 0;
 
   &__button {
     width: 100px;
   }
 }
+
+// .table {
+//   position: absolute;
+//   bottom: -10px;
+//   left: 0;
+//   height: 300px;
+//   width: 100%;
+//   background-color: var(--color-floor);
+// }
 </style>
