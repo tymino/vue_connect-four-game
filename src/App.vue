@@ -1,9 +1,13 @@
 <template>
   <div class="content">
     <div class="header">
-      <Button>menu</Button>
-      <div class="logo">oo</div>
-      <Button>restart</Button>
+      <div class="header__button">
+        <Button>menu</Button>
+      </div>
+      <Logo />
+      <div class="header__button">
+        <Button>restart</Button>
+      </div>
     </div>
     <Grid />
   </div>
@@ -12,17 +16,19 @@
 <script>
 import Grid from '@/components/Grid.vue';
 import Button from '@/components/Button.vue';
+import Logo from '@/components/Logo.vue';
 
 export default {
   name: 'App',
   components: {
     Grid,
     Button,
+    Logo,
   },
 };
 </script>
 
-<style>
+<style lang="scss">
 #app {
   display: flex;
   justify-content: center;
@@ -37,6 +43,11 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 1;
   padding: 10px 0;
+
+  &__button {
+    width: 100px;
+  }
 }
 </style>

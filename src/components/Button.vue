@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :class="className">
+  <button class="button" :class="className" type="button">
     <slot></slot>
   </button>
 </template>
@@ -23,6 +23,9 @@ export default {
   border-radius: 20px;
 
   text-transform: uppercase;
+
+  cursor: pointer;
+  user-select: none;
 }
 
 .prime {
