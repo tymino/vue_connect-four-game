@@ -20,11 +20,13 @@ export default {
 
 <style lang="scss" scoped>
 .cell {
+  --cell-size: 54px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 6vmin;
-  height: 6vmin;
+  width: var(--cell-size);
+  height: var(--cell-size);
   background-color: var(--color-background);
 
   border-radius: 50%;

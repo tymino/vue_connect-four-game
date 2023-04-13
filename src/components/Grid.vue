@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss" scoped>
 .grid {
-  --grid-padding: 1.3vmin;
+  --grid-padding: 12px;
   --grid-radius: 8%;
 
   display: grid;

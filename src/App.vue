@@ -77,22 +77,22 @@ export default {
   }
 
   &__table {
-    --table-radius-back: 20px;
-    --table-radius-front: 40px;
+    --table-radius-back: 10px;
+    --table-radius-front: 50%;
 
     position: absolute;
-    bottom: -40px;
+    bottom: -130px;
     left: 0;
-    height: 100px;
+    height: 180px;
     width: 100%;
     background-color: var(--color-floor);
-    border-radius: var(--table-radius-back) var(--table-radius-back)
-      var(--table-radius-front) var(--table-radius-front);
+    border-radius: var(--table-radius-front) var(--table-radius-front)
+      var(--table-radius-back) var(--table-radius-back);
   }
 
   &__timer {
     position: absolute;
-    bottom: -40px;
+    bottom: -80px;
     z-index: 5;
   }
 }

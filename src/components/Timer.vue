@@ -83,6 +83,7 @@ export default {
 }
 
 .timer__time {
+  margin-top: 10px;
   font-size: 2.4rem;
   line-height: 2.4rem;
 }
