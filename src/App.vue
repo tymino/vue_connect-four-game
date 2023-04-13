@@ -18,6 +18,9 @@
     <div class="content__card-2"><Card numberOfPlayer="2" score="10" /></div>
 
     <div class="content__table"></div>
+    <div class="content__timer">
+      <Timer />
+    </div>
   </div>
 </template>
 
@@ -26,6 +29,7 @@ import Button from '@/components/Button.vue';
 import Card from '@/components/Card.vue';
 import Grid from '@/components/Grid.vue';
 import Logo from '@/components/Logo.vue';
+import Timer from '@/components/Timer.vue';
 
 export default {
   name: 'App',
@@ -34,6 +38,7 @@ export default {
     Card,
     Grid,
     Logo,
+    Timer,
   },
 };
 </script>
@@ -57,7 +62,7 @@ export default {
   &__grid {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    z-index: 10;
+    z-index: 2;
   }
 
   &__card {
@@ -83,8 +88,12 @@ export default {
     background-color: var(--color-floor);
     border-radius: var(--table-radius-back) var(--table-radius-back)
       var(--table-radius-front) var(--table-radius-front);
+  }
 
-    z-index: 1;
+  &__timer {
+    position: absolute;
+    bottom: -40px;
+    z-index: 5;
   }
 }
 
