@@ -33,6 +33,9 @@ export default {
   &:hover {
     box-shadow: 0px 1px 18px var(--color-board);
   }
+  &.contrast:hover {
+    box-shadow: 0px 1px 14px var(--color-floor);
+  }
 }
 
 .prime {

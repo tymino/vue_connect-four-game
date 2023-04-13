@@ -18,17 +18,21 @@
     <div class="content__card-2"><Card numberOfPlayer="2" score="10" /></div>
 
     <div class="content__table"></div>
-    <div class="content__timer">
-      <Timer />
+    <div class="content__game-info">
+      <Result v-if="isGameEnd" />
+      <Timer v-else />
     </div>
   </div>
 </template>
 
 <script>
+// import { useStore, computed } from 'vuex';
+
 import Button from '@/components/Button.vue';
 import Card from '@/components/Card.vue';
 import Grid from '@/components/Grid.vue';
 import Logo from '@/components/Logo.vue';
+import Result from '@/components/Result.vue';
 import Timer from '@/components/Timer.vue';
 
 export default {
@@ -38,7 +42,17 @@ export default {
     Card,
     Grid,
     Logo,
+    Result,
     Timer,
+  },
+  setup() {
+    // const store = useStore();
+
+    let isGameEnd = true;
+
+    return {
+      isGameEnd,
+    };
   },
 };
 </script>
@@ -90,7 +104,7 @@ export default {
       var(--table-radius-back) var(--table-radius-back);
   }
 
-  &__timer {
+  &__game-info {
     position: absolute;
     bottom: -80px;
     z-index: 5;
