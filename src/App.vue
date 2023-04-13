@@ -9,13 +9,15 @@
         <Button>restart</Button>
       </div>
     </div>
-    <div class="content__grid"><Grid /></div>
+    <div class="content__grid">
+      <Grid />
+    </div>
 
     <div class="content__card-1"><Card numberOfPlayer="1" score="4" /></div>
 
     <div class="content__card-2"><Card numberOfPlayer="2" score="10" /></div>
 
-    <!-- <div class="table"></div> -->
+    <div class="content__table"></div>
   </div>
 </template>
 
@@ -38,6 +40,7 @@ export default {
 
 <style lang="scss">
 .content {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
@@ -45,7 +48,6 @@ export default {
   align-items: center;
   width: 100%;
   max-width: 850px;
-  // z-index: 10;
 
   &__header {
     grid-column: 2 / 3;
@@ -55,7 +57,7 @@ export default {
   &__grid {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    // z-index: 1000;
+    z-index: 10;
   }
 
   &__card {
@@ -67,6 +69,22 @@ export default {
       grid-column: 3 / 4;
       grid-row: 1 / 3;
     }
+  }
+
+  &__table {
+    --table-radius-back: 20px;
+    --table-radius-front: 40px;
+
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    height: 100px;
+    width: 100%;
+    background-color: var(--color-floor);
+    border-radius: var(--table-radius-back) var(--table-radius-back)
+      var(--table-radius-front) var(--table-radius-front);
+
+    z-index: 1;
   }
 }
 
@@ -88,13 +106,4 @@ export default {
     }
   }
 }
-
-// .table {
-//   position: absolute;
-//   bottom: -10px;
-//   left: 0;
-//   height: 300px;
-//   width: 100%;
-//   background-color: var(--color-floor);
-// }
 </style>

@@ -26,8 +26,13 @@ export default {
   letter-spacing: 1px;
   text-transform: uppercase;
 
+  transition: box-shadow ease-out var(--transition-delay);
   cursor: pointer;
   user-select: none;
+
+  &:hover {
+    box-shadow: 0px 1px 18px var(--color-board);
+  }
 }
 
 .prime {
