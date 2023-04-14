@@ -1,24 +1,11 @@
 import { createStore } from 'vuex';
 
-const state = {
-  gameGrid: [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 1, 0, 2, 0, 2],
-  ],
-};
-
-const getters = {
-  getFlatGrid(state) {
-    return state.gameGrid.flat();
-  },
-};
+import state from '@/store/state';
+import * as getters from '@/store/getters';
+import * as mutations from '@/store/mutations';
 
 export default createStore({
   state,
   getters,
-  mutations: {},
+  mutations,
 });

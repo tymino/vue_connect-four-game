@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="content__grid">
-      <Grid />
+      <Grid :gameGrid="gameGrid" :handleCellClick="handleCellClick" />
     </div>
 
     <div class="content__card-1"><Card numberOfPlayer="1" score="4" /></div>
@@ -26,7 +26,8 @@
 </template>
 
 <script>
-// import { useStore, computed } from 'vuex';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 import Button from '@/components/Button.vue';
 import Card from '@/components/Card.vue';
@@ -46,12 +47,12 @@ export default {
     Timer,
   },
   setup() {
-    // const store = useStore();
-
-    let isGameEnd = true;
+    const store = useStore();
 
     return {
-      isGameEnd,
+      isGameEnd: computed(() => store.state.isGameEnd),
+      gameGrid: computed(() => store.getters.getFlatGrid),
+      handleCellClick: ({ target }) => store.commit('handleCellClick', target),
     };
   },
 };

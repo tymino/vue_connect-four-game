@@ -5,14 +5,12 @@
       :key="index"
       :value="value"
       :column="index % 7"
+      @click="handleCellClick"
     />
   </div>
 </template>
 
 <script>
-import { useStore } from 'vuex';
-import { computed } from 'vue';
-
 import Cell from '@/components/Cell.vue';
 
 export default {
@@ -20,12 +18,15 @@ export default {
   components: {
     Cell,
   },
-  setup() {
-    const store = useStore();
-
-    return {
-      gameGrid: computed(() => store.getters.getFlatGrid),
-    };
+  props: {
+    gameGrid: {
+      type: Array,
+      required: true,
+    },
+    handleCellClick: {
+      type: Function,
+      required: true,
+    },
   },
 };
 </script>
