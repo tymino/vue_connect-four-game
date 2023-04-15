@@ -20,14 +20,14 @@
     <div class="content__table"></div>
     <div class="content__game-info">
       <Result v-if="isGameEnd" />
-      <Timer v-else />
+      <Timer v-else :time="time" />
     </div>
   </div>
 </template>
 
 <script>
 import { useStore } from 'vuex';
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 
 import Button from '@/components/Button.vue';
 import Card from '@/components/Card.vue';
@@ -49,8 +49,13 @@ export default {
   setup() {
     const store = useStore();
 
+    onMounted(() => {
+      store.dispatch('startTimer');
+    });
+
     return {
       isGameEnd: computed(() => store.state.isGameEnd),
+      time: computed(() => store.getters.getTime),
       gameGrid: computed(() => store.getters.getFlatGrid),
       handleCellClick: ({ target }) => store.commit('handleCellClick', target),
     };
