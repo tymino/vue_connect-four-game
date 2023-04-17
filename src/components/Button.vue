@@ -6,11 +6,11 @@
 
 <script>
 export default {
-  name: 'c-button',
+  name: "c-button",
   props: {
     className: {
       type: String,
-      default: 'game-control',
+      default: "game-control",
     },
   },
 };
