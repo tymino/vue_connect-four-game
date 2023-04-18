@@ -6,10 +6,11 @@ const state = {
     id: null,
     time: 0,
   },
-  steps: 0,
+  currentStep: 1,
+  totalSteps: 0,
   score: {
-    player1: 0,
-    player2: 0,
+    player1: 6,
+    player2: 13,
   },
   gameGrid: [
     [0, 0, 0, 0, 0, 0, 0],

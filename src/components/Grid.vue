@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Cell from '@/components/Cell.vue';
+import Cell from '@/components/UI/Cell.vue';
 
 export default {
   name: 'c-grid',

@@ -1,9 +1,9 @@
-export function handleCellClick(state, target) {
-  const column = target.dataset.column;
+export function updateStep(state, target) {
+  const targetColumn = target.dataset.column;
   let rowIndex = -1;
 
   state.gameGrid.forEach(() => {
-    if (state.gameGrid[rowIndex + 1][column] === 0) {
+    if (state.gameGrid[rowIndex + 1][targetColumn] === 0) {
       rowIndex++;
     }
   });
@@ -11,9 +11,10 @@ export function handleCellClick(state, target) {
   console.log(rowIndex);
 
   if (rowIndex >= 0) {
-    state.gameGrid[rowIndex][column] = 2;
+    state.gameGrid[rowIndex][targetColumn] = state.currentStep;
+    state.currentStep = state.currentStep === 1 ? 2 : 1;
+    state.totalSteps += 1;
   }
-
-  // state.score.player1 = 2;
-  // console.table(state.score.player1, column);
 }
+
+// function checkWinner() {}

@@ -13,14 +13,18 @@
       <Grid :gameGrid="gameGrid" :handleCellClick="handleCellClick" />
     </div>
 
-    <div class="content__card-1"><Card numberOfPlayer="1" score="4" /></div>
+    <div class="content__card-1">
+      <Card numberOfPlayer="1" :score="score.player1" />
+    </div>
 
-    <div class="content__card-2"><Card numberOfPlayer="2" score="10" /></div>
+    <div class="content__card-2">
+      <Card numberOfPlayer="2" :score="score.player2" />
+    </div>
 
     <div class="content__table"></div>
     <div class="content__game-info">
       <Result v-if="isGameEnd" />
-      <Timer v-else :time="time" />
+      <Timer v-else :time="time" :textInfo="currentStep" />
     </div>
   </div>
 </template>
@@ -29,12 +33,12 @@
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
 
-import Button from '@/components/Button.vue';
-import Card from '@/components/Card.vue';
+import Button from '@/components/UI/Button.vue';
+import Card from '@/components/UI/Card.vue';
+import Logo from '@/components/UI/Logo.vue';
+import Result from '@/components/UI/Result.vue';
+import Timer from '@/components/UI/Timer.vue';
 import Grid from '@/components/Grid.vue';
-import Logo from '@/components/Logo.vue';
-import Result from '@/components/Result.vue';
-import Timer from '@/components/Timer.vue';
 
 export default {
   name: 'App',
@@ -55,9 +59,12 @@ export default {
 
     return {
       isGameEnd: computed(() => store.state.isGameEnd),
+      score: computed(() => store.state.score),
+      currentStep: computed(() => store.getters.getCurrentStep),
       time: computed(() => store.getters.getTime),
       gameGrid: computed(() => store.getters.getFlatGrid),
-      handleCellClick: ({ target }) => store.commit('handleCellClick', target),
+      handleCellClick: ({ target }) =>
+        store.dispatch('handleCellClick', target),
     };
   },
 };
