@@ -22,11 +22,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.timer {
+@mixin timerAfterClass($side, $rotate) {
   --width: 58%;
   --height: 40px;
   --offset-top: -16px;
 
+  content: '';
+  position: absolute;
+  top: var(--offset-top);
+  #{$side}: 0;
+
+  width: var(--width);
+  height: var(--height);
+
+  background-color: var(--color-player-first);
+  border: 2px solid var(--color-edge);
+  border-left: none;
+  border-radius: 10px;
+
+  transform: rotate($rotate);
+
+  z-index: -1;
+}
+
+.timer {
   position: relative;
   padding: 0px 20px 10px 20px;
 
@@ -38,44 +57,14 @@ export default {
 
   color: var(--color-board);
   text-align: center;
-}
 
-.timer::after {
-  content: '';
-  position: absolute;
-  top: var(--offset-top);
-  right: 0;
+  &::after {
+    @include timerAfterClass(right, 20deg);
+  }
 
-  width: var(--width);
-  height: var(--height);
-
-  background-color: var(--color-player-first);
-  border: 2px solid var(--color-edge);
-  border-left: none;
-  border-radius: 10px;
-
-  transform: rotate(20deg);
-
-  z-index: -1;
-}
-
-.timer::before {
-  content: '';
-  position: absolute;
-  top: var(--offset-top);
-  left: 0;
-
-  width: var(--width);
-  height: var(--height);
-
-  background-color: var(--color-player-first);
-  border: 2px solid var(--color-edge);
-  border-right: none;
-  border-radius: 10px;
-
-  transform: rotate(-20deg);
-
-  z-index: -1;
+  &::before {
+    @include timerAfterClass(left, -20deg);
+  }
 }
 
 .timer__text {

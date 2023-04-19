@@ -19,6 +19,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@mixin cellFilled($color) {
+  box-shadow: inset 0px 3px var(--color-edge);
+  background-color: var($color);
+}
+
 .cell {
   --cell-size: 54px;
 
@@ -38,11 +43,10 @@ export default {
 }
 
 .player-1 {
-  box-shadow: inset 0px 3px var(--color-edge);
-  background-color: var(--color-player-first);
+  @include cellFilled(--color-player-first);
 }
+
 .player-2 {
-  box-shadow: inset 0px 3px var(--color-edge);
-  background-color: var(--color-player-second);
+  @include cellFilled(--color-player-second);
 }
 </style>
