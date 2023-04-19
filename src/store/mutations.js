@@ -1,4 +1,6 @@
-export function updateStep(state, target) {
+export const setScreen = (state, name) => (state.currentStep = name);
+
+export const updateStep = (state, target) => {
   const targetColumn = target.dataset.column;
   let rowIndex = -1;
 
@@ -15,6 +17,6 @@ export function updateStep(state, target) {
     state.currentStep = state.currentStep === 1 ? 2 : 1;
     state.totalSteps += 1;
   }
-}
+};
 
 // function checkWinner() {}

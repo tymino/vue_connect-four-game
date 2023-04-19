@@ -1,30 +1,32 @@
 <template>
   <div class="content">
-    <div class="content__header header">
-      <div class="header__button">
-        <Button>menu</Button>
+    <div class="game">
+      <div class="game__header header">
+        <div class="header__button">
+          <Button>menu</Button>
+        </div>
+        <Logo class="header__logo" />
+        <div class="header__button">
+          <Button>restart</Button>
+        </div>
       </div>
-      <Logo class="header__logo" />
-      <div class="header__button">
-        <Button>restart</Button>
+      <div class="game__grid">
+        <Grid :gameGrid="gameGrid" :handleCellClick="handleCellClick" />
       </div>
-    </div>
-    <div class="content__grid">
-      <Grid :gameGrid="gameGrid" :handleCellClick="handleCellClick" />
-    </div>
 
-    <div class="content__card-1">
-      <Card numberOfPlayer="1" :score="score.player1" />
-    </div>
+      <div class="game__card-1">
+        <Card numberOfPlayer="1" :score="score.player1" />
+      </div>
 
-    <div class="content__card-2">
-      <Card numberOfPlayer="2" :score="score.player2" />
-    </div>
+      <div class="game__card-2">
+        <Card numberOfPlayer="2" :score="score.player2" />
+      </div>
 
-    <div class="content__table"></div>
-    <div class="content__game-info">
-      <Result v-if="isGameEnd" />
-      <Timer v-else :time="time" :textInfo="currentStep" />
+      <div class="game__table"></div>
+      <div class="game__game-info">
+        <Result v-if="isGameEnd" />
+        <Timer v-else :time="time" :textInfo="currentStep" />
+      </div>
     </div>
   </div>
 </template>
@@ -72,6 +74,14 @@ export default {
 
 <style lang="scss" scoped>
 .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--color-background);
+}
+
+.game {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
