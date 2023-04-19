@@ -1,70 +1,31 @@
 <template>
-  <div class="content">
-    <div class="content__header header">
-      <div class="header__button">
-        <Button>menu</Button>
-      </div>
-      <Logo class="header__logo" />
-      <div class="header__button">
-        <Button>restart</Button>
-      </div>
-    </div>
-    <div class="content__grid">
-      <Grid :gameGrid="gameGrid" :handleCellClick="handleCellClick" />
-    </div>
-
-    <div class="content__card-1">
-      <Card numberOfPlayer="1" :score="score.player1" />
-    </div>
-
-    <div class="content__card-2">
-      <Card numberOfPlayer="2" :score="score.player2" />
-    </div>
-
-    <div class="content__table"></div>
-    <div class="content__game-info">
-      <Result v-if="isGameEnd" />
-      <Timer v-else :time="time" :textInfo="currentStep" />
-    </div>
+  <div>
+    <Menu v-if="currentScreen === 'menu'" />
+    <Game v-else-if="currentScreen === 'game'" />
+    <Rules v-else-if="currentScreen === 'rules'" />
   </div>
 </template>
 
 <script>
 import { useStore } from 'vuex';
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 
-import Button from '@/components/UI/Button.vue';
-import Card from '@/components/UI/Card.vue';
-import Logo from '@/components/UI/Logo.vue';
-import Result from '@/components/UI/Result.vue';
-import Timer from '@/components/UI/Timer.vue';
-import Grid from '@/components/Grid.vue';
+import Menu from '@/components/screens/Menu.vue';
+import Game from '@/components/screens/Game.vue';
+import Rules from '@/components/screens/Rules.vue';
 
 export default {
   name: 'App',
   components: {
-    Button,
-    Card,
-    Grid,
-    Logo,
-    Result,
-    Timer,
+    Menu,
+    Game,
+    Rules,
   },
   setup() {
     const store = useStore();
 
-    onMounted(() => {
-      store.dispatch('startTimer');
-    });
-
     return {
-      isGameEnd: computed(() => store.state.isGameEnd),
-      score: computed(() => store.state.score),
-      currentStep: computed(() => store.getters.getCurrentStep),
-      time: computed(() => store.getters.getTime),
-      gameGrid: computed(() => store.getters.getFlatGrid),
-      handleCellClick: ({ target }) =>
-        store.dispatch('handleCellClick', target),
+      currentScreen: computed(() => store.state.currentScreen),
     };
   },
 };

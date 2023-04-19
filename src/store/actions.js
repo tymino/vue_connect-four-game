@@ -1,7 +1,10 @@
-export const handleCellClick = ({ dispatch, commit }, target) => {
-  // dispatch('clearTimer');
-  dispatch('startTimer');
-  commit('updateStep', target);
+export const handleCellClick = ({ dispatch, commit, state }, target) => {
+  if (state.isGameEnd) {
+    clearInterval(state.timer.id);
+  } else {
+    dispatch('startTimer');
+    commit('updateStep', target);
+  }
 };
 
 export const startTimer = ({ state }) => {
@@ -15,7 +18,3 @@ export const startTimer = ({ state }) => {
     }
   }, 1000);
 };
-
-// export const clearTimer = ({ state }) => {
-//   clearInterval(state.timer.id);
-// };
