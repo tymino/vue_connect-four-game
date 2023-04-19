@@ -3,7 +3,7 @@
     <div class="result__winner">{{ winner }}</div>
     <div class="result__text">wins</div>
     <div class="result__button">
-      <Button className="game-control contrast">play again</Button>
+      <Button className="game contrast">play again</Button>
     </div>
   </div>
 </template>

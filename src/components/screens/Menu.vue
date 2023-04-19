@@ -2,9 +2,9 @@
   <div class="content">
     <div class="menu">
       <Logo class="menu__logo" />
-      <Button class="menu__button">play vs cpu</Button>
-      <Button class="menu__button">play vs player</Button>
-      <Button class="menu__button">game rules</Button>
+      <Button class="menu__button" className="menu vscpu">play vs cpu</Button>
+      <Button class="menu__button" className="menu vsplayer">play vs player</Button>
+      <Button class="menu__button" className="menu rules">game rules</Button>
     </div>
   </div>
 </template>
@@ -37,7 +37,7 @@ export default {
   align-items: center;
   justify-content: center;
   width: 300px;
-  height: 400px;
+  padding: 40px 30px;
 
   background-color: var(--color-background);
   border: 2px solid var(--color-edge);
