@@ -1,12 +1,15 @@
-export const handleCellClick = ({ state, commit }, target) => {
+export const handleCellClick = ({ state, commit, dispatch }, target) => {
+  if (state.isGameEnd) return;
+
   commit('updateStep', target);
   commit('checkWinner');
 
   if (state.isGameEnd) {
+    console.log('is Game End');
     clearInterval(state.timer.id);
   } else {
-    // dispatch('startTimer');
-    // commit('updateStep', target);
+    commit('preparationForTheNextStep');
+    dispatch('startTimer');
   }
 };
 

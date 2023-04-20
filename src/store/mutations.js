@@ -24,9 +24,6 @@ export const updateStep = (state, target) => {
 
   if (rowIndex >= 0) {
     state.gameGrid[rowIndex][targetColumn] = state.currentStep;
-    // state.currentStep = state.currentStep === 1 ? 2 : 1;
-
-    // state.totalSteps += 1;
   }
 };
 
@@ -44,4 +41,9 @@ export const checkWinner = (state) => {
       }
     }
   }
+};
+
+export const preparationForTheNextStep = (state) => {
+  state.totalSteps += 1;
+  state.currentStep = state.currentStep === 1 ? 2 : 1;
 };

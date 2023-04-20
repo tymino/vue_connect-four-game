@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <Menu v-if="currentScreen === screens[0]" />
     <Game v-else-if="currentScreen === screens[1]" />
     <Rules v-else-if="currentScreen === screens[2]" />
