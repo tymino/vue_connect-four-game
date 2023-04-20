@@ -28,15 +28,46 @@ export const updateStep = (state, target) => {
 };
 
 export const checkWinner = (state) => {
+  /*
+    isDiagonalLTRBLine, isDiagonalLBRTLine
+    LTRB - left-top right-bottom
+    LBRT - left-bottom right-top
+  */
+
   for (let row = 0; row < state.gameGrid.length; row++) {
     for (let col = 0; col < state.gameGrid[row].length; col++) {
-      const isHorLeft =
+      const isHorizontalLine =
         state.gameGrid[row][col] === state.currentStep &&
-        state.gameGrid[row][col - 1] === state.currentStep &&
-        state.gameGrid[row][col - 2] === state.currentStep &&
-        state.gameGrid[row][col - 3] === state.currentStep;
+        state.gameGrid[row][col + 1] === state.currentStep &&
+        state.gameGrid[row][col + 2] === state.currentStep &&
+        state.gameGrid[row][col + 3] === state.currentStep;
+      const isDiagonalLTRBLine =
+        state.gameGrid[row][col] === state.currentStep &&
+        state.gameGrid[row][col + 1] === state.currentStep &&
+        state.gameGrid[row][col + 1] === state.currentStep &&
+        state.gameGrid[row][col + 1] === state.currentStep;
+      const isDiagonalLBRTLine =
+        state.gameGrid[row][col] === state.currentStep &&
+        state.gameGrid[row][col + 1] === state.currentStep &&
+        state.gameGrid[row][col + 2] === state.currentStep &&
+        state.gameGrid[row][col + 3] === state.currentStep;
+      const isVerticalLine =
+        state.gameGrid[row][col] === state.currentStep &&
+        state.gameGrid[row][col + 1] === state.currentStep &&
+        state.gameGrid[row][col + 2] === state.currentStep &&
+        state.gameGrid[row][col + 3] === state.currentStep;
 
-      if (isHorLeft) {
+      console.log('test', state.gameGrid[6]);
+
+      // convert to 1d array and check valid result
+
+      const hasWinnerLine =
+        isHorizontalLine ||
+        isDiagonalLTRBLine ||
+        isDiagonalLBRTLine ||
+        isVerticalLine;
+
+      if (hasWinnerLine) {
         state.isGameEnd = true;
       }
     }
