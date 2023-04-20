@@ -1,9 +1,12 @@
-export const handleCellClick = ({ dispatch, commit, state }, target) => {
+export const handleCellClick = ({ state, commit }, target) => {
+  commit('updateStep', target);
+  commit('checkWinner');
+
   if (state.isGameEnd) {
     clearInterval(state.timer.id);
   } else {
-    dispatch('startTimer');
-    commit('updateStep', target);
+    // dispatch('startTimer');
+    // commit('updateStep', target);
   }
 };
 

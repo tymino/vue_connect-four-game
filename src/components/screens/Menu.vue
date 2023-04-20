@@ -2,14 +2,32 @@
   <div class="content">
     <div class="menu">
       <Logo class="menu__logo" />
-      <Button class="menu__button" className="menu vscpu">play vs cpu</Button>
-      <Button class="menu__button" className="menu vsplayer">play vs player</Button>
-      <Button class="menu__button" className="menu rules">game rules</Button>
+      <Button
+        class="menu__button"
+        className="menu vscpu"
+        @click="setScreenGame(true)"
+        >play vs cpu</Button
+      >
+      <Button
+        class="menu__button"
+        className="menu vsplayer"
+        @click="setScreenGame"
+        >play vs player</Button
+      >
+      <Button
+        class="menu__button"
+        className="menu rules"
+        @click="setScreenRules"
+        >game rules</Button
+      >
     </div>
   </div>
 </template>
 
 <script>
+import { useStore } from 'vuex';
+// import { computed } from 'vue';
+
 import Logo from '@/components/UI/Logo.vue';
 import Button from '@/components/UI/Button.vue';
 
@@ -18,6 +36,15 @@ export default {
   components: {
     Logo,
     Button,
+  },
+  setup() {
+    const store = useStore();
+
+    return {
+      // screens: computed(() => store.state.screens),
+      setScreenGame: (hasAI) => store.commit('setScreenGame', hasAI),
+      setScreenRules: () => store.commit('setScreenRules'),
+    };
   },
 };
 </script>

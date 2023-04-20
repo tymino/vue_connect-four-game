@@ -19,7 +19,7 @@ export default {
   props: {
     winner: {
       type: String,
-      default: 'player 0',
+      default: 'c 0',
     },
   },
 };

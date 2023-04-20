@@ -52,8 +52,7 @@ export default {
   border: 2px solid var(--color-edge);
   border-radius: 10px;
   box-shadow: 0px 4px var(--color-edge);
-
-  color: var(--color-board);
+  
   font-weight: var(--font-bold);
 
   &.vscpu {

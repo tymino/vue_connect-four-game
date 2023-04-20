@@ -3,7 +3,7 @@
     <div class="game">
       <div class="game__header header">
         <div class="header__button">
-          <Button>menu</Button>
+          <Button @click="setScreenMenu">menu</Button>
         </div>
         <Logo class="header__logo" />
         <div class="header__button">
@@ -24,7 +24,7 @@
 
       <div class="game__table"></div>
       <div class="game__game-info">
-        <Result v-if="isGameEnd" />
+        <Result v-if="isGameEnd" :winner="getWinner" />
         <Timer v-else :time="time" :textInfo="currentStep" />
       </div>
     </div>
@@ -60,11 +60,13 @@ export default {
     });
 
     return {
+      setScreenMenu: () => store.commit('setScreenMenu'),
       isGameEnd: computed(() => store.state.isGameEnd),
       score: computed(() => store.state.score),
       currentStep: computed(() => store.getters.getCurrentStep),
       time: computed(() => store.getters.getTime),
       gameGrid: computed(() => store.getters.getFlatGrid),
+      getWinner: computed(() => store.getters.getWinner),
       handleCellClick: ({ target }) =>
         store.dispatch('handleCellClick', target),
     };
