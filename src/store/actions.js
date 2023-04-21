@@ -2,7 +2,7 @@ export const handleCellClick = ({ state, commit, dispatch }, target) => {
   if (state.isGameEnd) return;
 
   commit('updateStep', target);
-  commit('checkWinner');
+  dispatch('checkWinner');
 
   if (state.isGameEnd) {
     console.log('is Game End');
@@ -11,6 +11,19 @@ export const handleCellClick = ({ state, commit, dispatch }, target) => {
     commit('preparationForTheNextStep');
     dispatch('startTimer');
   }
+};
+
+export const checkWinner = ({ commit }) => {
+  /*
+    isDiagonalLTRBLine, isDiagonalLBRTLine
+    LTRB - left-top right-bottom
+    LBRT - left-bottom right-top
+  */
+
+  commit('checkHorizontalLine');
+  commit('checkVerticalLine');
+  commit('checkDiagonalLTRBLine');
+  commit('checkDiagonalLBRTLine');
 };
 
 export const startTimer = ({ state }) => {

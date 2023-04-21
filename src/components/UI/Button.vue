@@ -1,5 +1,9 @@
 <template>
-  <button :class="`button button-${className}`" type="button">
+  <button
+    :class="`button button-${className}`"
+    type="button"
+    :disabled="isDisable"
+  >
     <slot></slot>
   </button>
 </template>
@@ -11,6 +15,10 @@ export default {
     className: {
       type: String,
       default: 'game',
+    },
+    isDisable: {
+      type: Boolean,
+      default: false,
     },
   },
 };
@@ -52,12 +60,17 @@ export default {
   border: 2px solid var(--color-edge);
   border-radius: 10px;
   box-shadow: 0px 4px var(--color-edge);
-  
+
   font-weight: var(--font-bold);
 
   &.vscpu {
     background-color: var(--color-player-first);
     color: var(--color-board);
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
   }
 
   &.vsplayer {

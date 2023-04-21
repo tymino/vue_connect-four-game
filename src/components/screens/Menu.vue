@@ -6,6 +6,7 @@
         class="menu__button"
         className="menu vscpu"
         @click="setScreenGame(true)"
+        :isDisable="true"
         >play vs cpu</Button
       >
       <Button
