@@ -1,6 +1,6 @@
 const state = {
   screens: ['menu', 'game', 'rules'],
-  currentScreen: 'game',
+  currentScreen: 'rules',
   isGameEnd: false,
   timer: {
     id: null,
@@ -23,21 +23,27 @@ const state = {
   isAiOn: false,
   rules: {
     title: 'rules',
-    section1: {
-      header: 'objective',
-      body: [
-        'be the first player to connect 4 of the same colored discs in a row (either vertically, horizontally, or diagonally).',
-      ],
-    },
-    section2: {
-      header: 'how to play',
-      body: [
-        'Red goes first in the game',
-        'Players must alternate turns, and only one disc can be dropped in each turn.',
-        'The game ends when there is a 4-in-a-row or a stalemate.',
-        'The starter of the previous game goes second on the next game.',
-      ],
-    },
+    sections: [
+      {
+        id: 1,
+        header: 'objective',
+        body: [
+          'Be the first player to connect 4 of the same colored discs in a row (either vertically, horizontally, or diagonally).',
+        ],
+        hasNumeric: false,
+      },
+      {
+        id: 2,
+        header: 'how to play',
+        body: [
+          'Red goes first in the game',
+          'Players must alternate turns, and only one disc can be dropped in each turn.',
+          'The game ends when there is a 4-in-a-row or a stalemate.',
+          'The starter of the previous game goes second on the next game.',
+        ],
+        hasNumeric: true,
+      },
+    ],
   },
 };
 
