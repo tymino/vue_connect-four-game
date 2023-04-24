@@ -87,4 +87,22 @@ export default {
     filter: opacity(92%);
   }
 }
+
+.button-confirm {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  width: 48px;
+  height: 48px;
+
+  background-color: var(--color-player-first);
+  border-radius: 50%;
+
+  color: var(--color-board);
+  font-size: 1.8rem;
+  font-weight: var(--font-bold);
+
+  transform: translate(-50%, 50%);
+}
 </style>

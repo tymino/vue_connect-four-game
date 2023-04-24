@@ -17,6 +17,7 @@
           <span>{{ item }}</span>
         </div>
       </div>
+      <Button @click="setScreenMenu" className="confirm">✓</Button>
     </div>
   </div>
 </template>
@@ -25,13 +26,17 @@
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 
+import Button from '@/components/UI/Button.vue';
+
 export default {
   name: 'screen-rules',
+  components: { Button },
   setup() {
     const store = useStore();
 
     return {
       rules: computed(() => store.state.rules),
+      setScreenMenu: () => store.commit('setScreenMenu'),
     };
   },
 };
@@ -46,6 +51,7 @@ export default {
   background-color: var(--color-floor);
 }
 .rules {
+  position: relative;
   width: 360px;
   max-width: 100%;
 
@@ -76,7 +82,7 @@ export default {
 
   &-body {
     display: flex;
-    font-size: .9rem;
+    font-size: 0.9rem;
     font-weight: var(--font-normal);
 
     & > span:first-child {
