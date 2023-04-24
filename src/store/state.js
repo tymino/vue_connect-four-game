@@ -1,6 +1,6 @@
 const state = {
   screens: ['menu', 'game', 'rules'],
-  currentScreen: 'rules',
+  currentScreen: 'game',
   isGameEnd: false,
   timer: {
     id: null,
@@ -9,16 +9,16 @@ const state = {
   currentStep: 1,
   totalSteps: 0,
   score: {
-    player1: 6,
-    player2: 13,
+    player1: 0,
+    player2: 0,
   },
   gameGrid: [
     [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 3, 3, 3, 3],
-    [0, 4, 0, 0, 0, 0, 0],
-    [0, 0, 4, 0, 0, 0, 0],
-    [0, 0, 0, 4, 0, 0, 0],
-    [0, 0, 0, 0, 4, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
   ],
   isAiOn: false,
   rules: {

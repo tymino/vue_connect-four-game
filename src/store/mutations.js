@@ -4,6 +4,9 @@ export const setScreenMenu = (state) => {
 };
 
 export const setScreenGame = (state, hasAI = false) => {
+  state.isGameEnd = false;
+  state.gameGrid = state.gameGrid.map((row) => row.map(() => 0));
+  
   state.currentScreen = state.screens[1];
   state.isAiOn = hasAI;
 };
@@ -11,6 +14,10 @@ export const setScreenGame = (state, hasAI = false) => {
 export const setScreenRules = (state) => {
   state.currentScreen = state.screens[2];
 };
+
+// export const setRestartGame = (state) => {
+//   state.gameGrid = state.gameGrid.map((row) => row.map(() => 0));
+// };
 
 export const updateStep = (state, target) => {
   const targetColumn = target.dataset.column;

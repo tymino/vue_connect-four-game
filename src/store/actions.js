@@ -1,3 +1,8 @@
+export const handleRestartGame = ({ commit, dispatch }) => {
+  commit('setScreenGame');
+  dispatch('startTimer');
+};
+
 export const handleCellClick = ({ state, commit, dispatch }, target) => {
   if (state.isGameEnd) return;
 

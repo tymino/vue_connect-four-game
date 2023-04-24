@@ -3,7 +3,9 @@
     <div class="result__winner">{{ winner }}</div>
     <div class="result__text">wins</div>
     <div class="result__button">
-      <Button className="game contrast">play again</Button>
+      <Button className="game contrast" @click="handleRestartGame"
+        >play again</Button
+      >
     </div>
   </div>
 </template>
@@ -20,6 +22,10 @@ export default {
     winner: {
       type: String,
       default: 'c 0',
+    },
+    handleRestartGame: {
+      type: Function,
+      default: () => {},
     },
   },
 };

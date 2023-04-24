@@ -7,7 +7,7 @@
         </div>
         <Logo class="header__logo" />
         <div class="header__button">
-          <Button>restart</Button>
+          <Button @click="handleRestartGame">restart</Button>
         </div>
       </div>
       <div class="game__grid">
@@ -22,9 +22,16 @@
         <Card numberOfPlayer="2" :score="score.player2" />
       </div>
 
-      <div class="game__table"></div>
+      <div
+        class="game__table"
+        :class="`game__table-${getWinnerIndexForColor}`"
+      ></div>
       <div class="game__game-info">
-        <Result v-if="isGameEnd" :winner="getWinner" />
+        <Result
+          v-if="isGameEnd"
+          :winner="getWinner"
+          :handleRestartGame="handleRestartGame"
+        />
         <Timer v-else :time="time" :textInfo="currentStep" />
       </div>
     </div>
@@ -61,9 +68,13 @@ export default {
 
     return {
       setScreenMenu: () => store.commit('setScreenMenu'),
+      handleRestartGame: () => store.dispatch('handleRestartGame'),
       isGameEnd: computed(() => store.state.isGameEnd),
       score: computed(() => store.state.score),
       currentStep: computed(() => store.getters.getCurrentStep),
+      getWinnerIndexForColor: computed(
+        () => store.getters.getWinnerIndexForColor
+      ),
       time: computed(() => store.getters.getTime),
       gameGrid: computed(() => store.getters.getFlatGrid),
       getWinner: computed(() => store.getters.getWinner),
@@ -127,6 +138,13 @@ export default {
     background-color: var(--color-floor);
     border-radius: var(--table-radius-front) var(--table-radius-front)
       var(--table-radius-back) var(--table-radius-back);
+
+    &-1 {
+      background-color: var(--color-player-first);
+    }
+    &-2 {
+      background-color: var(--color-player-second);
+    }
   }
 
   &__game-info {
