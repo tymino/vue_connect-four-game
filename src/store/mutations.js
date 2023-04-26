@@ -5,6 +5,7 @@ export const setScreenMenu = (state) => {
 
 export const setScreenGame = (state, hasAI = false) => {
   state.isGameEnd = false;
+  state.lastColumn = null;  
   state.gameGrid = state.gameGrid.map((row) => row.map(() => 0));
 
   state.currentScreen = state.screens[1];
@@ -20,7 +21,7 @@ export const setScreenRules = (state) => {
 // };
 
 export const updateStep = (state, target) => {
-  const targetColumn = target.dataset.column;
+  const targetColumn = Number(target.dataset.column);
   let rowIndex = -1;
 
   state.gameGrid.forEach(() => {
@@ -31,7 +32,7 @@ export const updateStep = (state, target) => {
 
   if (rowIndex >= 0) {
     state.gameGrid[rowIndex][targetColumn] = state.currentStep;
-    state.lastColumn = targetColumn;
+    state.lastColumn = targetColumn + 1;
   }
 };
 

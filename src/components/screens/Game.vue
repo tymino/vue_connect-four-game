@@ -11,7 +11,11 @@
         </div>
       </div>
       <div class="game__grid">
-        <Grid :gameGrid="gameGrid" :handleCellClick="handleCellClick" />
+        <Grid
+          :gameGrid="gameGrid"
+          :handleCellClick="handleCellClick"
+          :lastColumn="lastColumn"
+        />
       </div>
 
       <div class="game__card-1">
@@ -70,6 +74,7 @@ export default {
       setScreenMenu: () => store.commit('setScreenMenu'),
       handleRestartGame: () => store.dispatch('handleRestartGame'),
       isGameEnd: computed(() => store.state.isGameEnd),
+      lastColumn: computed(() => store.state.lastColumn),
       score: computed(() => store.state.score),
       currentStep: computed(() => store.getters.getCurrentStep),
       getWinnerIndexForColor: computed(

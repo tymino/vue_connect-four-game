@@ -1,28 +1,40 @@
 <template>
-  <div class="arrow" ref="refArrow"></div>
+  <div class="arrow-container" ref="refArrow">
+    <div class="arrow" v-if="lastColumn"></div>
+  </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, onUpdated } from 'vue';
 
 export default {
   name: 'ui-arrow',
+  props: {
+    lastColumn: {
+      type: [Number, null],
+      required: true,
+    },
+  },
+
   setup(props) {
     const refArrow = ref(null);
 
     const computeArrowOffset = () => {
-      const gridWidth = refArrow.value.parentElement.clientHeight;
-      // const cellWidth =
-      // refArrow.value.parentElement.lastElementChild.clientHeight;
+      const style = getComputedStyle(document.body);
+      const gridPaddingAndGap = Number(
+        style.getPropertyValue('--grid-padding').replace(/px/, '')
+      );
 
-      const arrowOffset = Math.floor(gridWidth / 7) * 2;
+      const cellDiv = refArrow.value.parentElement.firstElementChild;
+      const cellWidth = cellDiv.getBoundingClientRect().width;
 
-      console.log(props);
+      const blockForStep = gridPaddingAndGap + cellWidth;
+      const arrowOffset = blockForStep * props.lastColumn - cellWidth / 2;
 
       refArrow.value.style.left = `${arrowOffset}px`;
     };
 
-    onMounted(computeArrowOffset);
+    onUpdated(computeArrowOffset);
 
     return {
       refArrow,
@@ -33,14 +45,14 @@ export default {
 
 <style lang="scss" scoped>
 @mixin timerAfterClass($side, $rotate) {
-  --width: 58%;
-  --height: 40px;
-  --offset-top: -16px;
+  --width: 21px;
+  --height: 14px;
+  --offset-bottom: -7px;
 
   content: '';
   position: absolute;
-  top: var(--offset-top);
-  #{$side}: 0;
+  bottom: var(--offset-bottom);
+  #{$side}: -1px;
 
   width: var(--width);
   height: var(--height);
@@ -48,30 +60,39 @@ export default {
   background-color: var(--color-player-first);
   border: 2px solid var(--color-edge);
   border-left: none;
-  border-radius: 10px;
+  border-top: none;
+  border-radius: 6px;
 
   transform: rotate($rotate);
 
   z-index: -1;
 }
 
-.arrow {
+.arrow-container {
   position: absolute;
-  top: 0;
+  top: -20px;
   left: 0;
-  width: 30px;
-  height: 30px;
-  background-color: var(--color-player-first);
 
   transform: translate(-50%, -100%);
   transition: left ease 0.6s;
+}
+.arrow {
+  position: relative;
 
-  // &::after {
-  //   @include timerAfterClass(right, 20deg);
-  // }
+  width: 32px;
+  height: 20px;
+  background-color: var(--color-player-first);
+  border: 2px solid var(--color-edge);
+  border-bottom: none;
+  border-radius: 6px;
+  box-shadow: 0px -2px var(--color-edge);
 
-  // &::before {
-  //   @include timerAfterClass(left, -20deg);
-  // }
+  &::after {
+    @include timerAfterClass(right, -45deg);
+  }
+
+  &::before {
+    @include timerAfterClass(left, 45deg);
+  }
 }
 </style>

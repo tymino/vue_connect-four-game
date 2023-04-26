@@ -1,6 +1,5 @@
 <template>
   <div class="grid">
-    <Arrow />
     <Cell
       v-for="(value, index) in gameGrid"
       :key="index"
@@ -8,6 +7,7 @@
       :column="index % 7"
       @click="handleCellClick"
     />
+    <Arrow :lastColumn="lastColumn" />
   </div>
 </template>
 
@@ -30,13 +30,16 @@ export default {
       type: Function,
       required: true,
     },
+    lastColumn: {
+      type: [Number, null],
+      required: true,
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .grid {
-  --grid-padding: 12px;
   --grid-radius: 8%;
 
   position: relative;
