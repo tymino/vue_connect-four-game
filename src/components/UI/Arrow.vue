@@ -20,9 +20,10 @@ export default {
     const refArrow = ref(null);
 
     const computeArrowOffset = () => {
-      const style = getComputedStyle(document.body);
       const gridPaddingAndGap = Number(
-        style.getPropertyValue('--grid-padding').replace(/px/, '')
+        getComputedStyle(document.body)
+          .getPropertyValue('--grid-padding')
+          .replace(/px/, '')
       );
 
       const cellDiv = refArrow.value.parentElement.firstElementChild;
