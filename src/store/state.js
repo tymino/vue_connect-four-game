@@ -8,6 +8,7 @@ const state = {
   },
   currentStep: 1,
   totalSteps: 0,
+  lastColumn: -1,
   score: {
     player1: 0,
     player2: 0,

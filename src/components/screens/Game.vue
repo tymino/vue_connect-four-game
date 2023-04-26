@@ -160,7 +160,7 @@ export default {
   grid-template-rows: 1fr;
   align-items: center;
   width: 100%;
-  padding: 34px 0;
+  padding: 50px 0;
 
   &__logo {
     justify-content: center;
