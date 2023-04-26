@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'c-timer',
+  name: 'iu-timer',
   props: {
     textInfo: {
       type: String,

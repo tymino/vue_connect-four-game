@@ -14,7 +14,7 @@
 import Button from '@/components/UI/Button.vue';
 
 export default {
-  name: 'c-result',
+  name: 'iu-result',
   components: {
     Button,
   },

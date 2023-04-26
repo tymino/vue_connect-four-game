@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'c-card',
+  name: 'iu-card',
   props: {
     numberOfPlayer: {
       Number,

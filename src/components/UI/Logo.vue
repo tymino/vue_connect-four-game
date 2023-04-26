@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'c-logo',
+  name: 'iu-logo',
 };
 </script>
 

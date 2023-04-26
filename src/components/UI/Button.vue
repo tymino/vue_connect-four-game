@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'c-button',
+  name: 'iu-button',
   props: {
     className: {
       type: String,

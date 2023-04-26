@@ -16,7 +16,7 @@ import Arrow from '@/components/UI/Arrow.vue';
 import Cell from '@/components/UI/Cell.vue';
 
 export default {
-  name: 'c-grid',
+  name: 'iu-grid',
   components: {
     Arrow,
     Cell,

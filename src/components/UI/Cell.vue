@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'c-cell',
+  name: 'iu-cell',
   props: {
     value: {
       type: Number,
