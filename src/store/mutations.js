@@ -16,10 +16,6 @@ export const setScreenRules = (state) => {
   state.currentScreen = state.screens[2];
 };
 
-// export const setRestartGame = (state) => {
-//   state.gameGrid = state.gameGrid.map((row) => row.map(() => 0));
-// };
-
 export const updateStep = (state, target) => {
   const targetColumn = Number(target.dataset.column);
   let rowIndex = -1;
