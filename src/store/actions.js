@@ -10,7 +10,6 @@ export const handleCellClick = ({ state, commit, dispatch }, target) => {
   dispatch('checkWinner');
 
   if (state.isGameEnd) {
-    console.log('is Game End');
     clearInterval(state.timer.id);
   } else {
     commit('preparationForTheNextStep');
@@ -25,10 +24,13 @@ export const checkWinner = ({ commit }) => {
     LBRT - left-bottom right-top
   */
 
+  console.log('winner');
+
   commit('checkHorizontalLine');
   commit('checkVerticalLine');
   commit('checkDiagonalLTRBLine');
   commit('checkDiagonalLBRTLine');
+  commit('addPointsForWinner');
 };
 
 export const startTimer = ({ state }) => {

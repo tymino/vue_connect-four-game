@@ -1,12 +1,15 @@
 export const setScreenMenu = (state) => {
   state.currentScreen = state.screens[0];
   state.isAiOn = false;
+  state.score = { ...state.score, player1: 0, plauer2: 0 };
 };
 
 export const setScreenGame = (state, hasAI = false) => {
-  state.isGameEnd = false;
-  state.lastColumn = null;  
   state.gameGrid = state.gameGrid.map((row) => row.map(() => 0));
+  state.isGameEnd = false;
+  state.lastColumn = null;
+  state.totalSteps = 0;
+  state.currentStep = 1;
 
   state.currentScreen = state.screens[1];
   state.isAiOn = hasAI;
@@ -29,6 +32,12 @@ export const updateStep = (state, target) => {
   if (rowIndex >= 0) {
     state.gameGrid[rowIndex][targetColumn] = state.currentStep;
     state.lastColumn = targetColumn + 1;
+    state.totalSteps += 1;
+
+    if (state.totalSteps === 7 * 6) {
+      state.isGameEnd = true;
+      state.currentStep = 0;
+    }
   }
 };
 
@@ -139,6 +148,15 @@ export const checkDiagonalLBRTLine = (state) => {
 };
 
 export const preparationForTheNextStep = (state) => {
-  state.totalSteps += 1;
   state.currentStep = state.currentStep === 1 ? 2 : 1;
+};
+
+export const addPointsForWinner = (state) => {
+  if (state.isGameEnd) {
+    if (state.currentStep === 1) {
+      state.score.player1 += state.score.countOfAddPoint;
+    } else {
+      state.score.player2 += state.score.countOfAddPoint;
+    }
+  }
 };

@@ -10,6 +10,7 @@ const state = {
   totalSteps: 0,
   lastColumn: null,
   score: {
+    countOfAddPoint: 6,
     player1: 0,
     player2: 0,
   },
