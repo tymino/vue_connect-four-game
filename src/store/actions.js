@@ -4,9 +4,11 @@ export const handleRestartGame = ({ commit, dispatch }) => {
 };
 
 export const handleCellClick = ({ state, commit, dispatch }, target) => {
-  if (state.isGameEnd) return;
+  const targetColumn = Number(target.dataset.column);
 
-  commit('updateStep', target);
+  if (state.isGameEnd || state.gameGrid[0][targetColumn] > 0) return;
+
+  commit('updateStep', targetColumn);
   dispatch('checkWinner');
 
   if (state.isGameEnd) {
@@ -23,8 +25,6 @@ export const checkWinner = ({ commit }) => {
     LTRB - left-top right-bottom
     LBRT - left-bottom right-top
   */
-
-  console.log('winner');
 
   commit('checkHorizontalLine');
   commit('checkVerticalLine');

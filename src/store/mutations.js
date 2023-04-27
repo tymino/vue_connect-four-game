@@ -19,8 +19,7 @@ export const setScreenRules = (state) => {
   state.currentScreen = state.screens[2];
 };
 
-export const updateStep = (state, target) => {
-  const targetColumn = Number(target.dataset.column);
+export const updateStep = (state, targetColumn) => {
   let rowIndex = -1;
 
   state.gameGrid.forEach(() => {
