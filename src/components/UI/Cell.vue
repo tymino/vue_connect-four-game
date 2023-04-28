@@ -76,4 +76,10 @@ export default {
   @include cellFilled(--color-player-second);
   @include cellWinner;
 }
+
+@media (max-width: 520px) {
+  .cell {
+    --cell-size: 10vmin;
+  }
+}
 </style>

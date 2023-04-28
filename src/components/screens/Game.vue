@@ -94,8 +94,9 @@ export default {
 .content {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start;
+  height: 130vh;
+  padding-top: 10px;
   background-color: var(--color-background);
 }
 
@@ -117,6 +118,7 @@ export default {
   &__grid {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
+    padding-top: 50px;
     z-index: 2;
   }
 
@@ -165,7 +167,6 @@ export default {
   grid-template-rows: 1fr;
   align-items: center;
   width: 100%;
-  padding: 50px 0;
 
   &__logo {
     justify-content: center;
@@ -174,6 +175,59 @@ export default {
   &__button {
     &:last-child {
       justify-self: flex-end;
+    }
+  }
+}
+
+@media (max-width: 730px) {
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 120vh;
+    padding-top: 60px;
+    background-color: var(--color-background);
+  }
+  .game {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    max-width: 480px;
+
+    &__header {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+      margin-bottom: 40px;
+    }
+
+    &__grid {
+      grid-column: 1 / 3;
+      grid-row: 3 / 4;
+      z-index: 2;
+    }
+
+    &__card {
+      &-1 {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        justify-self: flex-start;
+        padding-left: 10px;
+      }
+      &-2 {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        justify-self: flex-end;
+        padding-right: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .game {
+    margin: 0 14px;
+
+    &__game-info {
+      bottom: -90px;
     }
   }
 }

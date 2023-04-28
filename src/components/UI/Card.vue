@@ -77,4 +77,36 @@ export default {
     text-align: center;
   }
 }
+
+@media (max-width: 730px) {
+  @mixin myAfterClass($color, $sideValue) {
+    --circle-size: 40px;
+
+    top: 50%;
+    left: $sideValue;
+  }
+
+  .card {
+    --grid-radius: 16px;
+
+    padding: 0px 30px;
+    padding-top: 10px;
+
+    &.player-1::after {
+      @include myAfterClass(--color-player-first, 0%);
+    }
+
+    &.player-2::after {
+      @include myAfterClass(--color-player-second, 100%);
+    }
+
+    &__title {
+      line-height: 1.1rem;
+    }
+
+    &__score {
+      line-height: 3rem;
+    }
+  }
+}
 </style>

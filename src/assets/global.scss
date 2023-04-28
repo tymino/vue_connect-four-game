@@ -30,3 +30,9 @@ html {
   font-family: var(--font-alkatra);
   font-size: var(--font-size);
 }
+
+@media (max-width: 520px) {
+  :root {
+    --grid-padding: 2vmin;
+  }
+}

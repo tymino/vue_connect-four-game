@@ -71,7 +71,7 @@ export default {
 
 .arrow-container {
   position: absolute;
-  top: -20px;
+  top: -16px;
   left: 0;
 
   transform: translate(-50%, -100%);
