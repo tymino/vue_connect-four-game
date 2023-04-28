@@ -1,6 +1,6 @@
 const state = {
   screens: ['menu', 'game', 'rules'],
-  currentScreen: 'game',
+  currentScreen: 'menu',
   isGameEnd: false,
   timer: {
     id: null,
